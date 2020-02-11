@@ -2,8 +2,7 @@
 
 bool UserFile::checkIfFileContainsUsers(){
     CMarkup xml;
-    string path = "users.xml";
-    xml.Load(path);
+    xml.Load(fileName);
     xml.ResetPos();
     if (xml.FindElem("ListOfUsers")){
         xml.IntoElem();
@@ -16,8 +15,7 @@ bool UserFile::checkIfFileContainsUsers(){
 
 void UserFile::appendUserToFile(User userToAppend){
     CMarkup xml;
-    string path = "users.xml";
-    xml.Load(path);
+    xml.Load(fileName);
     xml.ResetPos();
     if (checkIfFileContainsUsers()){
         xml.FindElem("ListOfUsers");
@@ -31,14 +29,13 @@ void UserFile::appendUserToFile(User userToAppend){
     xml.AddAttrib("id", userToAppend.getId());
     xml.AddAttrib("login", userToAppend.getLogin());
     xml.AddAttrib("password", userToAppend.getPassword());
-    xml.Save(path);
+    xml.Save(fileName);
 }
 
 vector<User> UserFile::loadUsersFromFile(){
     CMarkup xml;
     vector <User> allUsers;
-    string path = "users.xml";
-    xml.Load(path);
+    xml.Load(fileName);
     xml.ResetPos();
     if (checkIfFileContainsUsers()){
         xml.FindElem("ListOfUsers");
@@ -54,3 +51,17 @@ vector<User> UserFile::loadUsersFromFile(){
     return allUsers;
 }
 
+void UserFile::updatePassword(int idNumber, string newPassword){
+    string idToUpdate = SupportingMethods::convertIntToString(idNumber);
+    CMarkup xml;
+    xml.Load(fileName);
+    xml.ResetPos();
+    xml.FindElem("ListOfUsers");
+    xml.IntoElem();
+    while (xml.FindElem("user")){
+        if (xml.GetAttrib("id") == idToUpdate){
+            xml.AddAttrib("password", newPassword);
+        }
+    xml.Save(fileName);
+    }
+}

@@ -15,10 +15,9 @@ class UserFile{
     bool checkIfFileContainsUsers();
 
 public:
-    UserFile(string NAMEOFFILEWITHUSERS) : fileName(NAMEOFFILEWITHUSERS){
-
-    };
+    UserFile(string NAMEOFFILEWITHUSERS) : fileName(NAMEOFFILEWITHUSERS){ };
     void appendUserToFile(User);
     vector <User> loadUsersFromFile();
+    void updatePassword(int, string);
 };
 #endif

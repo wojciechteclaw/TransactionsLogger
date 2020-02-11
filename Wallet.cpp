@@ -33,23 +33,29 @@ void Wallet::lanchProgram(){
             system("pause");
         }
         else{
-            cout << "Hello signedIn" << endl;
-
-        /*
-            char wybor = menuInterface.wyborZMenuZalogowanegoUzytkownika();
-            switch (wybor)
-            {
+            char signedInUserChoice = menuInterface.choiceFromSignInUserMenu();
+            switch (signedInUserChoice){
             case '1':
-                adresMenadzer.dodajAdresata();
-                cout<< 1 << endl; //idOstatniegoAdresata = dodajAdresata(adresaci, idZalogowanegoUzytkownika, idOstatniegoAdresata);
+                cout << "Dodaj przychod" << endl;
                 break;
             case '2':
-                adresMenadzer.wyszukajAdresatowPoImieniu();
+                cout << "Dodaj wydatek" << endl;
                 break;
             case '3':
-                cout<< 3 << endl; //wyszukajAdresatowPoNazwisku(adresaci);
+                cout << "Bilans z biezacego miesiaca" << endl;
                 break;
-                */
+            case '4':
+                cout << "Bilans z poprzedniego miesiaca" << endl;
+                break;
+            case '5':
+                cout << "Bilans z wybranego okresu" << endl;
+                break;
+            case '6':
+                userManager.changeSignedInUserPassword();
+                break;
+            case '9':
+                userManager.logOut();
+            }
             }
         }
     }
