@@ -5,6 +5,6 @@ using namespace std;
 
 int main()
 {
-    Wallet wallet("Uzytkownicy.txt");
+    Wallet wallet("users.xml");
     wallet.lanchProgram();
 }

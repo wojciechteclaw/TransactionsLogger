@@ -24,13 +24,11 @@ void UserManager::signInUser(){
                 if (users[i].getPassword() == password)
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
-                    system("pause");
                     signInUserId = users[i].getId();
                     return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
-            system("pause");
             signInUserId = 0;
             return ;
         }
@@ -80,5 +78,21 @@ int UserManager::getLastUserId(){
     else
     {
         return users.back().getId();
+    }
+}
+
+void UserManager::logOut(){
+    signInUserId = 0;
+}
+
+void UserManager::changeSignedInUserPassword(){
+    string newPassword;
+    cout << "Wprowadz nowe haslo: ";
+    cin >> newPassword;
+    for (int i = 0; i < users.size(); i ++){
+        if (users[i].getId() == signInUserId){
+            users[i].setPassword(newPassword);
+            userFile.updatePassword(signInUserId, newPassword);
+        }
     }
 }
