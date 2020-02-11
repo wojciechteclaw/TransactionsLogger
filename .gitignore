@@ -1,0 +1,5 @@
+*.xml
+*.depend
+bin
+obj
+*.cbp
