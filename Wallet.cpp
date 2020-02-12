@@ -6,10 +6,14 @@ void Wallet::registerUser(){
 
 void Wallet::signInUser(){
     userManager.signInUser();
+    if (userManager.getSignInUserId() != 0){
+        usersBudgetManager = new UsersBudgetManager(userManager.getSignInUserId());
+    }
 }
 
 void Wallet::lanchProgram(){
     MenuInterface menuInterface;
+    userManager.loadAllUsersFromFile();
     while (true)
     {
         if (userManager.getSignInUserId() == 0)
@@ -56,6 +60,7 @@ void Wallet::lanchProgram(){
             case '9':
                 userManager.logOut();
             }
+            system("pause");
             }
         }
     }

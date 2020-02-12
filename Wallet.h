@@ -1,16 +1,22 @@
 #include <iostream>
 #include "UserManager.h"
 #include "MenuInterface.h"
+#include "UsersBudgetManager.h"
 
 using namespace std;
 
 class Wallet{
     UserManager userManager;
-    //Menadzer wydatkow
+    UsersBudgetManager *usersBudgetManager;
 
 public:
     Wallet(string nameOfFileWithUsers) : userManager(nameOfFileWithUsers){
-        userManager.loadAllUsersFromFile();
+        usersBudgetManager = NULL;
+    }
+
+    ~Wallet(){
+        delete usersBudgetManager;
+        usersBudgetManager = NULL;
     }
     void registerUser();
     void signInUser();

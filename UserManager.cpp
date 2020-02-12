@@ -83,6 +83,7 @@ int UserManager::getLastUserId(){
 
 void UserManager::logOut(){
     signInUserId = 0;
+    cout << "Wylogowano uzytkownika" << endl;
 }
 
 void UserManager::changeSignedInUserPassword(){
@@ -95,4 +96,5 @@ void UserManager::changeSignedInUserPassword(){
             userFile.updatePassword(signInUserId, newPassword);
         }
     }
+    cout << "Zmieniono haslo" << endl;
 }

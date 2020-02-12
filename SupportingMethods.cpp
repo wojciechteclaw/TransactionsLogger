@@ -22,7 +22,7 @@ char SupportingMethods::loadCharacter()
 
     while (true)
     {
-        getline(cin, input);
+        cin >> input;
 
         if (input.length() == 1)
         {
