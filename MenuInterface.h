@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include "SupportingMethods.h"
 
-
 using namespace std;
 class MenuInterface{
 

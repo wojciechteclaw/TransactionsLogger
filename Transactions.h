@@ -1,6 +1,12 @@
 #ifndef TRANSACTIONS_H
 #define TRANSACTIONS_H
+#include "Income.h"
+#include "IncomeFile.h"
+#include "Expend.h"
+#include "ExpendFile.h"
+#include "SupportingMethods.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
