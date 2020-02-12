@@ -23,7 +23,7 @@ public:
     void addExpend();
     void generateReportFromCurrentMonth();
     void generateReportFromPreviousMonth();
-    void generateReportFromCustomDate(string);
+    void generateReportFromCustomDate();
 };
 
 #endif

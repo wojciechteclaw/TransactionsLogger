@@ -40,19 +40,19 @@ void Wallet::lanchProgram(){
             char signedInUserChoice = menuInterface.choiceFromSignInUserMenu();
             switch (signedInUserChoice){
             case '1':
-                cout << "Dodaj przychod" << endl;
+                usersBudgetManager -> addIncome();
                 break;
             case '2':
-                cout << "Dodaj wydatek" << endl;
+                usersBudgetManager -> addExpend();
                 break;
             case '3':
-                cout << "Bilans z biezacego miesiaca" << endl;
+                usersBudgetManager -> generateReportFromCurrentMonth();
                 break;
             case '4':
-                cout << "Bilans z poprzedniego miesiaca" << endl;
+                usersBudgetManager -> generateReportFromPreviousMonth();
                 break;
             case '5':
-                cout << "Bilans z wybranego okresu" << endl;
+                usersBudgetManager -> generateReportFromCustomDate();
                 break;
             case '6':
                 userManager.changeSignedInUserPassword();

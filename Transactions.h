@@ -21,7 +21,6 @@ public:
     void addExpend();
     bool checkIfDateIsCorrect(string);
     int getCurrentDate();
-
 };
 
 #endif
