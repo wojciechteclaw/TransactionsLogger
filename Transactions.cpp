@@ -30,7 +30,7 @@ void Transactions::addIncome(){
     incomeAmount = getAmount();
     newIncome.setAmount(incomeAmount);
     newIncome.setDescription(descreption);
-    newIncome.setIncomeDate(date);
+    newIncome.setDate(date);
     newIncome.setUserId(SIGNEDINUSERID);
     newIncome.setId(incomeFile.getLastIncomeId() + 1);
     incomes.push_back(newIncome);
@@ -48,7 +48,7 @@ void Transactions::addExpend(){
     incomeAmount = getAmount();
     newExpend.setAmount(incomeAmount);
     newExpend.setDescription(descreption);
-    newExpend.setExpendDate(date);
+    newExpend.setDate(date);
     newExpend.setUserId(SIGNEDINUSERID);
     newExpend.setId(expendFile.getLastExpendId() + 1);
     expends.push_back(newExpend);

@@ -8,8 +8,8 @@ string Income::getDescription(){
     return description;
 }
 
-long int Income::getIncomeDate(){
-    return incomeDate;
+long int Income::getDate(){
+    return date;
 }
 
 int Income::getId(){
@@ -36,6 +36,6 @@ void Income::setUserId(int newId){
     userId = newId;
 }
 
-void Income::setIncomeDate(long int newDate){
-    incomeDate = newDate;
+void Income::setDate(long int newDate){
+    date = newDate;
 }

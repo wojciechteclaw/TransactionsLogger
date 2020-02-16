@@ -14,8 +14,7 @@
 using namespace std;
 
 class Transactions{
-    vector <Income> incomes;
-    vector <Expend> expends;
+
     IncomeFile incomeFile;
     ExpendFile expendFile;
     const int SIGNEDINUSERID;
@@ -28,7 +27,7 @@ class Transactions{
     double getAmount();
     string replaceCommaInString(string);
     long int getDate();
-    long int getCurrentDate();
+
 
 public:
     Transactions(int signedInUserId) :SIGNEDINUSERID(signedInUserId) {
@@ -37,6 +36,9 @@ public:
     };
     void addIncome();
     void addExpend();
+    long int getCurrentDate();
+    vector <Income> incomes;
+    vector <Expend> expends;
 
 
 

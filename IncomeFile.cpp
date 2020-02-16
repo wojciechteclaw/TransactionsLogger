@@ -29,7 +29,7 @@ void IncomeFile::addIncomeToFile(Income newIncome){
     xml.AddElem("income");
     xml.AddAttrib("id", newIncome.getId());
     xml.AddAttrib("userId", newIncome.getUserId());
-    xml.AddAttrib("date", newIncome.getIncomeDate());
+    xml.AddAttrib("date", newIncome.getDate());
     amountAsString = SupportingMethods::convertDoubleToString(newIncome.getAmount());
     xml.AddAttrib("amount", amountAsString);
     xml.AddAttrib("description", newIncome.getDescription());
@@ -52,7 +52,7 @@ vector<Income> IncomeFile::loadAllUserExpends(int signedInUserId){
                     temporaryIncome.setDescription(xml.GetAttrib("description"));
                     temporaryIncome.setId(SupportingMethods::convertStringToInt(xml.GetAttrib("id")));
                     temporaryIncome.setUserId(SupportingMethods::convertStringToInt(xml.GetAttrib("userId")));
-                    temporaryIncome.setIncomeDate(SupportingMethods::convertStringToInt(xml.GetAttrib("date")));
+                    temporaryIncome.setDate(SupportingMethods::convertStringToInt(xml.GetAttrib("date")));
                     incomes.push_back(temporaryIncome);
                 }
         }

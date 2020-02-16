@@ -29,7 +29,7 @@ void ExpendFile::addExpendToFile(Expend newExpend){
     xml.AddElem("expend");
     xml.AddAttrib("id", newExpend.getId());
     xml.AddAttrib("userId", newExpend.getUserId());
-    xml.AddAttrib("date", newExpend.getExpendDate());
+    xml.AddAttrib("date", newExpend.getDate());
     amountAsString = SupportingMethods::convertDoubleToString(newExpend.getAmount());
     xml.AddAttrib("amount", amountAsString);
     xml.AddAttrib("description", newExpend.getDescription());
@@ -52,7 +52,7 @@ vector<Expend> ExpendFile::loadAllUserExpends(int signedInUserId){
                     temporaryExpend.setDescription(xml.GetAttrib("description"));
                     temporaryExpend.setId(SupportingMethods::convertStringToInt(xml.GetAttrib("id")));
                     temporaryExpend.setUserId(SupportingMethods::convertStringToInt(xml.GetAttrib("userId")));
-                    temporaryExpend.setExpendDate(SupportingMethods::convertStringToInt(xml.GetAttrib("date")));
+                    temporaryExpend.setDate(SupportingMethods::convertStringToInt(xml.GetAttrib("date")));
                     expends.push_back(temporaryExpend);
                 }
         }

@@ -7,20 +7,20 @@ using namespace std;
 class Expend{
     double amount;
     string description;
-    long int expendDate;
+    long int date;
     int id;
     int userId;
 
 public:
     double getAmount();
     string getDescription();
-    long int getExpendDate();
+    long int getDate();
     int getId();
     int getUserId();
 
     void setAmount(double);
     void setDescription(string);
-    void setExpendDate(long int);
+    void setDate(long int);
     void setId(int);
     void setUserId(int);
 };
