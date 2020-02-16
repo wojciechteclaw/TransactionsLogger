@@ -10,6 +10,7 @@ string SupportingMethods::convertIntToString(int number)
 
 string SupportingMethods::loadLine()
 {
+    cin.ignore();
     string input = "";
     getline(cin, input);
     return input;
@@ -17,6 +18,7 @@ string SupportingMethods::loadLine()
 
 char SupportingMethods::loadCharacter()
 {
+    cin.ignore();
     string input = "";
     char character  = {0};
 

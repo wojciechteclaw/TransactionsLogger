@@ -1,18 +1,59 @@
 #include "Transactions.h"
 
-void Transactions::addIncome(){
-    cout << "add income" << endl;
+long int Transactions::getDate(){
+    long int date = 0;
+    cout << "Czy transakcja dotyczy dzisiejszego dnia? Jesli tak wcisnij 't' i zatwierdz przyciskiem ENTER." << endl;
+    char answer;
+    answer = SupportingMethods::loadCharacter();
+    if (answer == 't'){
+            return getCurrentDate();
+    }
+    else{
+        do{
+            cout << "Podaj date przychodu w formacie rrrr-mm-dd:" << endl;
+            string dateToConver = SupportingMethods::loadLine();
+            return getDateFromString(dateToConver);
+        }while (date == 0);
+    }
 }
 
-void Transactions::addExpend(){
-    cout << "add expend" << endl;
-    cout << "Podaj date:" << endl;
-    while (true){
-        string date;
-        cin >> date;
-        cout << getDateFromString(date) << endl;
-    }
 
+void Transactions::addIncome(){
+    Income newIncome;
+    cout << "DODAJ PRZYCHOD" << endl;
+    long int date = getDate();
+    double incomeAmount;
+    string descreption, answer;
+    cout << "Podaj opis przychodu: " << endl;
+    descreption = SupportingMethods::loadLine();
+    incomeAmount = getAmount();
+    newIncome.setAmount(incomeAmount);
+    newIncome.setDescription(descreption);
+    newIncome.setIncomeDate(date);
+    newIncome.setUserId(SIGNEDINUSERID);
+    newIncome.setId(lastIncomeId + 1);
+    incomes.push_back(newIncome);
+    //Dopisanie do pliku
+}
+
+
+
+void Transactions::addExpend(){
+    Expend newExpend;
+    cout << "DODAJ WYDATEK" << endl;
+    long int date = getDate();
+    double incomeAmount;
+    string descreption, answer;
+    cout << "Podaj opis wydatku: " << endl;
+    descreption = SupportingMethods::loadLine();
+    incomeAmount = getAmount();
+    newExpend.setAmount(incomeAmount);
+    newExpend.setDescription(descreption);
+    newExpend.setExpendDate(date);
+    newExpend.setUserId(SIGNEDINUSERID);
+    newExpend.setId(lastIncomeId + 1);
+    expends.push_back(newExpend);
+    //Dopisanie do pliku
 }
 
 long int Transactions::getCurrentDate(){
@@ -26,7 +67,6 @@ long int Transactions::getCurrentDate(){
     long int dateToReturn = atoi(dateElement);
 }
 
-
 int Transactions::getNumberOfDaysInMonth(int month, int year){
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) return 31;
     else if (month == 4 || month == 6 || month == 9 || month == 11) return 30;
@@ -36,7 +76,6 @@ int Transactions::getNumberOfDaysInMonth(int month, int year){
     }
     else return 0;
 }
-
 
 bool Transactions::checkIfDateIsCorrect(int year, int month, int day, string dateAsString){
     long int dateToCheck = atoi(dateAsString.c_str());
@@ -51,11 +90,8 @@ bool Transactions::checkIfDateIsCorrect(int year, int month, int day, string dat
     return false;
 }
 
-
-
 long int Transactions::getDateFromString(string enteredDate){
-    string year, month, day;
-    string dateElement;
+    string year, month, day, dateElement;
     int elementsOfDate = 1;
     int dashLocation = 0;
     for (int i = 0; i < 3; i ++){
@@ -75,32 +111,27 @@ long int Transactions::getDateFromString(string enteredDate){
         elementsOfDate ++;
     }
     string dateString = year + month + day;
-    if (checkIfDateIsCorrect(atoi(year.c_str()), atoi(month.c_str()), atoi(day.c_str()), dateString)){
-
-        return atoi(dateString.c_str());
-    }
+    if (checkIfDateIsCorrect(atoi(year.c_str()), atoi(month.c_str()), atoi(day.c_str()), dateString)) return atoi(dateString.c_str());
     else return 0;
 }
 
+string Transactions::replaceCommaInString(string stringToReplace){
+    int indexOfComma = -1;
+    indexOfComma = stringToReplace.find(",");
+    if (indexOfComma != -1){
+        return stringToReplace.replace(indexOfComma, 1, ".");
+    }
+    else{
+        return stringToReplace;
+    }
+}
 
-/*
-
-
-
-
-/*
-int lastIncomeId;
-    int lastExpendId;
-    const int SIGNEDINUSERID;
-    void loadIncomes();
-    void loadExpenses();
-    void loadUserBudget();
-public:
-    Transactions(int signedInUserId) :SIGNEDINUSERID(signedInUserId) {};
-    void addIncome();
-    void addExpend();
-    bool checkIfDateIsCorrect(string);
-    int getCurrentDate();
-
-
-    */
+double Transactions::getAmount(){
+        cout << "Podaj kwote: " << endl;
+        string inputAmount = SupportingMethods::loadLine();
+        double amountToReturn;
+        string stringToConvertIntoDouble = replaceCommaInString(inputAmount);
+        stringstream iss (stringToConvertIntoDouble);
+        iss >> amountToReturn;
+        return amountToReturn;
+}

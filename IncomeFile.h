@@ -9,7 +9,7 @@ using namespace std;
 class IncomeFile{
 
 public:
-    void addIncomeToFile();
+    void addIncomeToFile(Income);
     vector<Income> loadAllUserExpends(int);
     bool doesFileContainsIncomes();
     int getLastIncomeId();

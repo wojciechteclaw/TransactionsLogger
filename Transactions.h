@@ -33,6 +33,9 @@ public:
     long int getCurrentDate();
     bool checkIfDateIsCorrect(int, int, int, string);
     long int getDateFromString(string);
+    double getAmount();
+    string replaceCommaInString(string);
+    long int getDate();
 };
 
 #endif
