@@ -4,7 +4,7 @@ bool UserFile::checkIfFileContainsUsers(){
     CMarkup xml;
     xml.Load(fileName);
     xml.ResetPos();
-    if (xml.FindElem("ListOfUsers")){
+    if (xml.FindElem("listOfUsers")){
         xml.IntoElem();
         if (xml.FindElem("user")){
             return true;
@@ -18,11 +18,11 @@ void UserFile::appendUserToFile(User userToAppend){
     xml.Load(fileName);
     xml.ResetPos();
     if (checkIfFileContainsUsers()){
-        xml.FindElem("ListOfUsers");
+        xml.FindElem("listOfUsers");
         xml.IntoElem();
     }
     else {
-        xml.AddElem("ListOfUsers");
+        xml.AddElem("listOfUsers");
         xml.IntoElem();
     }
     xml.AddElem("user");
@@ -38,7 +38,7 @@ vector<User> UserFile::loadUsersFromFile(){
     xml.Load(fileName);
     xml.ResetPos();
     if (checkIfFileContainsUsers()){
-        xml.FindElem("ListOfUsers");
+        xml.FindElem("listOfUsers");
         xml.IntoElem();
         while (xml.FindElem("user")){
                 User tempUser;
@@ -56,7 +56,7 @@ void UserFile::updatePassword(int idNumber, string newPassword){
     CMarkup xml;
     xml.Load(fileName);
     xml.ResetPos();
-    xml.FindElem("ListOfUsers");
+    xml.FindElem("listOfUsers");
     xml.IntoElem();
     while (xml.FindElem("user")){
         if (xml.GetAttrib("id") == idToUpdate){

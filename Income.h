@@ -1,5 +1,6 @@
 #ifndef INCOME_H
 #define INCOME_H
+#include <vector>
 #include <iostream>
 
 
@@ -8,20 +9,20 @@ using namespace std;
 class Income{
     double amount;
     string description;
-    long int incomeDate;
+    long int date;
     int id;
     int userId;
 
 public:
     double getAmount();
     string getDescription();
-    long int getIncomeDate();
+    long int getDate();
     int getId();
     int getUserId();
 
     void setAmount(double);
     void setDescription(string);
-    void setIncomeDate(long int);
+    void setDate(long int);
     void setUserId(int);
     void setId(int);
 };

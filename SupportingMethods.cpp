@@ -1,25 +1,33 @@
 #include "SupportingMethods.h"
 
-string SupportingMethods::convertIntToString(int number)
-{
+double SupportingMethods::convertStringToDouble(string stringToConvert){
+        double amountToReturn;
+        stringstream iss (stringToConvert);
+        iss >> amountToReturn;
+        return amountToReturn;
+}
+
+string SupportingMethods::convertIntToString(int number){
     ostringstream ss;
     ss << number;
     string str = ss.str();
     return str;
 }
 
-string SupportingMethods::loadLine()
-{
-    cin.ignore();
-    string input = "";
+string SupportingMethods::loadLine(){
+    string input;
     getline(cin, input);
     return input;
 }
 
-char SupportingMethods::loadCharacter()
-{
-    cin.ignore();
-    string input = "";
+string SupportingMethods::convertDoubleToString(double number){
+    ostringstream strs;
+    strs << number;
+    return strs.str();
+}
+
+char SupportingMethods::loadCharacter(){
+    string input;
     char character  = {0};
 
     while (true)
@@ -33,11 +41,11 @@ char SupportingMethods::loadCharacter()
         }
         cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
     }
+    cin.ignore();
     return character;
 }
 
-string SupportingMethods::changeFirstLetterToCapitalAndRestToLowercase(string text)
-{
+string SupportingMethods::changeFirstLetterToCapitalAndRestToLowercase(string text){
     if (!text.empty())
     {
         transform(text.begin(), text.end(), text.begin(), ::tolower);
@@ -46,8 +54,7 @@ string SupportingMethods::changeFirstLetterToCapitalAndRestToLowercase(string te
     return text;
 }
 
-int SupportingMethods::convertStringToInt(string string_number)
-{
+int SupportingMethods::convertStringToInt(string string_number){
     int number;
     istringstream iss(string_number);
     iss >> number;
@@ -55,8 +62,7 @@ int SupportingMethods::convertStringToInt(string string_number)
     return number;
 }
 
-string SupportingMethods::getNumber(string text, int characterPosition)
-{
+string SupportingMethods::getNumber(string text, int characterPosition){
     string number = "";
     while(isdigit(text[characterPosition]) == true)
     {

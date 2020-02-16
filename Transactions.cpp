@@ -9,14 +9,15 @@ long int Transactions::getDate(){
             return getCurrentDate();
     }
     else{
+        string dateToConver;
         do{
             cout << "Podaj date przychodu w formacie rrrr-mm-dd:" << endl;
-            string dateToConver = SupportingMethods::loadLine();
-            return getDateFromString(dateToConver);
+            dateToConver = SupportingMethods::loadLine();
+            date = getDateFromString(dateToConver);
         }while (date == 0);
+        return date;
     }
 }
-
 
 void Transactions::addIncome(){
     Income newIncome;
@@ -29,14 +30,12 @@ void Transactions::addIncome(){
     incomeAmount = getAmount();
     newIncome.setAmount(incomeAmount);
     newIncome.setDescription(descreption);
-    newIncome.setIncomeDate(date);
+    newIncome.setDate(date);
     newIncome.setUserId(SIGNEDINUSERID);
-    newIncome.setId(lastIncomeId + 1);
+    newIncome.setId(incomeFile.getLastIncomeId() + 1);
     incomes.push_back(newIncome);
-    //Dopisanie do pliku
+    incomeFile.addIncomeToFile(newIncome);
 }
-
-
 
 void Transactions::addExpend(){
     Expend newExpend;
@@ -49,11 +48,11 @@ void Transactions::addExpend(){
     incomeAmount = getAmount();
     newExpend.setAmount(incomeAmount);
     newExpend.setDescription(descreption);
-    newExpend.setExpendDate(date);
+    newExpend.setDate(date);
     newExpend.setUserId(SIGNEDINUSERID);
-    newExpend.setId(lastIncomeId + 1);
+    newExpend.setId(expendFile.getLastExpendId() + 1);
     expends.push_back(newExpend);
-    //Dopisanie do pliku
+    expendFile.addExpendToFile(newExpend);
 }
 
 long int Transactions::getCurrentDate(){
@@ -129,9 +128,7 @@ string Transactions::replaceCommaInString(string stringToReplace){
 double Transactions::getAmount(){
         cout << "Podaj kwote: " << endl;
         string inputAmount = SupportingMethods::loadLine();
-        double amountToReturn;
-        string stringToConvertIntoDouble = replaceCommaInString(inputAmount);
-        stringstream iss (stringToConvertIntoDouble);
-        iss >> amountToReturn;
+        string inputAmountWithProperComma = replaceCommaInString(inputAmount);
+        double amountToReturn = SupportingMethods::convertStringToDouble(inputAmountWithProperComma);
         return amountToReturn;
 }

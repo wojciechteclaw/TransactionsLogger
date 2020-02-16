@@ -14,28 +14,34 @@
 using namespace std;
 
 class Transactions{
-    vector <Income> incomes;
-    vector <Expend> expends;
+
     IncomeFile incomeFile;
     ExpendFile expendFile;
-    int lastIncomeId;
-    int lastExpendId;
     const int SIGNEDINUSERID;
     vector <Income> loadIncomes();
     vector <Expend> loadExpenses();
     void loadUserBudget();
-    int getNumberOfDaysInMonth(int, int);
-
-public:
-    Transactions(int signedInUserId) :SIGNEDINUSERID(signedInUserId) {};
-    void addIncome();
-    void addExpend();
-    long int getCurrentDate();
     bool checkIfDateIsCorrect(int, int, int, string);
+    int getNumberOfDaysInMonth(int, int);
     long int getDateFromString(string);
     double getAmount();
     string replaceCommaInString(string);
     long int getDate();
+
+
+public:
+    Transactions(int signedInUserId) :SIGNEDINUSERID(signedInUserId) {
+        incomes = incomeFile.loadAllUserExpends(SIGNEDINUSERID);
+        expends = expendFile.loadAllUserExpends(SIGNEDINUSERID);
+    };
+    void addIncome();
+    void addExpend();
+    long int getCurrentDate();
+    vector <Income> incomes;
+    vector <Expend> expends;
+
+
+
 };
 
 #endif

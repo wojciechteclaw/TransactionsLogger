@@ -8,8 +8,8 @@ string Expend::getDescription(){
     return description;
 }
 
-long int Expend::getExpendDate(){
-    return expendDate;
+long int Expend::getDate(){
+    return date;
 }
 
 int Expend::getId(){
@@ -36,6 +36,6 @@ void Expend::setUserId(int newId){
     userId = newId;
 }
 
-void Expend::setExpendDate(long int newDate){
-    expendDate = newDate;
+void Expend::setDate(long int newDate){
+    date = newDate;
 }

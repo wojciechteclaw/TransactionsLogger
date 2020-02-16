@@ -9,6 +9,7 @@ using namespace std;
 class UsersBudgetManager{
     const int SIGNEDINUSERID;
     Transactions *transactions;
+    long int getBeginingOfTheCurrentMonth();
 
 public:
     UsersBudgetManager(int signedInUserId) : SIGNEDINUSERID(signedInUserId)

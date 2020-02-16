@@ -14,13 +14,13 @@ void UserManager::signInUser(){
     }
     string login, password;
     cout << endl << "Podaj login: ";
-    cin >> login;
+    login = SupportingMethods::loadLine();
     for (int i = 0; i < users.size(); i++){
         if (login == users[i].getLogin()){
             for (int numberOfAttempts = 3; numberOfAttempts > 0; numberOfAttempts--)
             {
                 cout << "Podaj haslo. Pozostalo prob: " << numberOfAttempts << ": ";
-                cin >> password;
+                password = SupportingMethods::loadLine();
                 if (users[i].getPassword() == password)
                 {
                     cout << endl << "Zalogowales sie." << endl << endl;
@@ -42,11 +42,11 @@ User UserManager::getNewUserData(){
     do
     {
         cout << "Podaj login: ";
-        cin >> login;
+        login = SupportingMethods::loadLine();
     } while (checkIfLoginExists(login) == true);
     string password;
     cout << "Podaj haslo: ";
-    cin >> password;
+    password = SupportingMethods::loadLine();
     user.setId(newUserId);
     user.setLogin(login);
     user.setPassword(password);
@@ -89,7 +89,7 @@ void UserManager::logOut(){
 void UserManager::changeSignedInUserPassword(){
     string newPassword;
     cout << "Wprowadz nowe haslo: ";
-    cin >> newPassword;
+    newPassword = SupportingMethods::loadLine();
     for (int i = 0; i < users.size(); i ++){
         if (users[i].getId() == signInUserId){
             users[i].setPassword(newPassword);

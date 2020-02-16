@@ -4,6 +4,7 @@
 #include <iostream>
 #include <sstream>
 #include <algorithm>
+#include "SupportingMethods.h"
 
 using namespace std;
 
@@ -16,5 +17,7 @@ public:
     static string changeFirstLetterToCapitalAndRestToLowercase(string);
     static int convertStringToInt(string);
     static string getNumber(string, int);
+    static string convertDoubleToString(double);
+    static double convertStringToDouble(string);
 };
 #endif
