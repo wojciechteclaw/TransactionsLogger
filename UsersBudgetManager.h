@@ -10,6 +10,7 @@ class UsersBudgetManager{
     const int SIGNEDINUSERID;
     Transactions *transactions;
     long int getBeginingOfTheCurrentMonth();
+    void generateReportFromDateToDate(long int, long int);
 
 public:
     UsersBudgetManager(int signedInUserId) : SIGNEDINUSERID(signedInUserId)

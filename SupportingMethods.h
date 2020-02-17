@@ -19,5 +19,6 @@ public:
     static string getNumber(string, int);
     static string convertDoubleToString(double);
     static double convertStringToDouble(string);
+    static string convertNumberToDateRepresentation(long int);
 };
 #endif

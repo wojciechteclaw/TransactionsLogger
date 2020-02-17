@@ -1,5 +1,15 @@
 #include "Transactions.h"
 
+void Transactions::representExpend(Expend expendToShow){
+    string dateToPresentToUser = SupportingMethods::convertNumberToDateRepresentation(expendToShow.getDate());
+    cout << dateToPresentToUser << "  " << expendToShow.getAmount() << "  " << expendToShow.getDescription() << endl;
+}
+
+void Transactions::representIncome(Income incomeToShow){
+    string dateToPresentToUser = SupportingMethods::convertNumberToDateRepresentation(incomeToShow.getDate());
+    cout << dateToPresentToUser << "  " << incomeToShow.getAmount() << "  " << incomeToShow.getDescription() << endl;
+}
+
 long int Transactions::getDate(){
     long int date = 0;
     cout << "Czy transakcja dotyczy dzisiejszego dnia? Jesli tak wcisnij 't' i zatwierdz przyciskiem ENTER." << endl;

@@ -23,11 +23,9 @@ class Transactions{
     void loadUserBudget();
     bool checkIfDateIsCorrect(int, int, int, string);
     int getNumberOfDaysInMonth(int, int);
-    long int getDateFromString(string);
     double getAmount();
     string replaceCommaInString(string);
     long int getDate();
-
 
 public:
     Transactions(int signedInUserId) :SIGNEDINUSERID(signedInUserId) {
@@ -37,8 +35,11 @@ public:
     void addIncome();
     void addExpend();
     long int getCurrentDate();
+    long int getDateFromString(string);
     vector <Income> incomes;
     vector <Expend> expends;
+    void representIncome(Income);
+    void representExpend(Expend);
 
 
 

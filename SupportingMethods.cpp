@@ -71,3 +71,13 @@ string SupportingMethods::getNumber(string text, int characterPosition){
     }
     return number;
 }
+
+string SupportingMethods::convertNumberToDateRepresentation(long int number){
+    string stringToConvert = convertIntToString(number);
+    string year, month, day;
+    year = stringToConvert.substr(0, 4);
+    month = stringToConvert.substr(4, 2);
+    day = stringToConvert.substr(6, 2);
+    string finalStringtoReturn = year + "-" + month + "-" + day;
+    return finalStringtoReturn;
+}
