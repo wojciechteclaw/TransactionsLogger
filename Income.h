@@ -2,6 +2,7 @@
 #define INCOME_H
 #include <vector>
 #include <iostream>
+#include "SupportingMethods.h"
 
 
 using namespace std;
@@ -25,5 +26,6 @@ public:
     void setDate(long int);
     void setUserId(int);
     void setId(int);
+    void representIncome();
 };
 #endif

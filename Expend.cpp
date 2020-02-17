@@ -1,5 +1,10 @@
 #include "Expend.h"
 
+void Expend::representExpend(){
+    string dateToPresentToUser = SupportingMethods::convertNumberToDateRepresentation(getDate());
+    cout << dateToPresentToUser << "  " << getAmount() << "  " << getDescription() << endl;
+}
+
 double Expend::getAmount(){
     return amount;
 }

@@ -1,13 +1,39 @@
 #include "Transactions.h"
 
-void Transactions::representExpend(Expend expendToShow){
-    string dateToPresentToUser = SupportingMethods::convertNumberToDateRepresentation(expendToShow.getDate());
-    cout << dateToPresentToUser << "  " << expendToShow.getAmount() << "  " << expendToShow.getDescription() << endl;
+long int Transactions::getPreviousMonthStartDay(){
+    long int currentDate = getCurrentDate();
+    int year = currentDate / 1000;
+    int currentMonth = (currentDate % 10000) / 100;
+    int reportYear, previousMonth;
+    if (currentMonth == 1){
+        previousMonth = 12;
+        reportYear = year - 1;
+    }
+    else{
+        previousMonth = currentMonth - 1;
+        reportYear = year;
+    }
+    string dateAsString = SupportingMethods::convertIntToString(reportYear) + SupportingMethods::convertIntToString(previousMonth) +"01";
+    return SupportingMethods::convertStringToInt(dateAsString);
 }
 
-void Transactions::representIncome(Income incomeToShow){
-    string dateToPresentToUser = SupportingMethods::convertNumberToDateRepresentation(incomeToShow.getDate());
-    cout << dateToPresentToUser << "  " << incomeToShow.getAmount() << "  " << incomeToShow.getDescription() << endl;
+long int Transactions::getPreviousMonthEndDay(){
+    long int currentDate = getCurrentDate();
+    int year = currentDate / 1000;
+    int currentMonth = (currentDate % 10000) / 100;
+    int reportYear, previousMonth;
+    if (currentMonth == 1){
+        previousMonth = 12;
+        reportYear = year - 1;
+    }
+    else{
+        previousMonth = currentMonth - 1;
+        reportYear = year;
+    }
+    int numberOfDaysInPreviousMonth = getNumberOfDaysInMonth(previousMonth, reportYear);
+    string dateAsString = SupportingMethods::convertIntToString(reportYear) + SupportingMethods::convertIntToString(previousMonth);
+    dateAsString += SupportingMethods::convertIntToString(numberOfDaysInPreviousMonth);
+    return SupportingMethods::convertStringToInt(dateAsString);
 }
 
 long int Transactions::getDate(){

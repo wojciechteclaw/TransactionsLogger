@@ -1,5 +1,10 @@
 #include "Income.h"
 
+void Income::representIncome(){
+    string dateToPresentToUser = SupportingMethods::convertNumberToDateRepresentation(getDate());
+    cout << dateToPresentToUser << "  " << getAmount() << "  " << getDescription() << endl;
+}
+
 double Income::getAmount(){
     return amount;
 }

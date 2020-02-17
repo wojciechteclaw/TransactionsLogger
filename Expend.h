@@ -1,6 +1,7 @@
 #ifndef EXPEND_H
 #define EXPEND_H
 #include <iostream>
+#include "SupportingMethods.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ public:
     void setDate(long int);
     void setId(int);
     void setUserId(int);
+    void representExpend();
 };
 
 #endif

@@ -40,6 +40,8 @@ public:
     vector <Expend> expends;
     void representIncome(Income);
     void representExpend(Expend);
+    long int getPreviousMonthStartDay();
+    long int getPreviousMonthEndDay();
 
 
 

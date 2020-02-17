@@ -19,26 +19,39 @@ long int UsersBudgetManager::getBeginingOfTheCurrentMonth(){
 
 void UsersBudgetManager::generateReportFromCurrentMonth(){
     long int beginingOfTheMonth = getBeginingOfTheCurrentMonth();
-
+    long int currentDay = transactions ->getCurrentDate();
+    generateReportFromDateToDate(beginingOfTheMonth, currentDay);
 }
 
 void UsersBudgetManager::generateReportFromPreviousMonth(){
-    return ;
+    long int beginningOfPreviousMonth =  transactions->getPreviousMonthStartDay();
+    long int endOfPreviousMonth = transactions ->getPreviousMonthEndDay();
+    generateReportFromDateToDate(beginningOfPreviousMonth, endOfPreviousMonth);
 }
 
 void UsersBudgetManager::generateReportFromDateToDate(long int beginningOfPeriod, long int endOfPeriod){
     vector <Income> localListOfIncomes = transactions -> incomes;
     vector <Expend> localListOfExpends = transactions -> expends;
-    for (int i = 0; localListOfIncomes.size(); i++){
+    double expendFromPeriod = 0;
+    double incomeFromPeriod = 0;
+    cout << "Przychody:" << endl;
+    for (int i = 0; i < localListOfIncomes.size(); i++){
         long int date = localListOfIncomes[i].getDate();
-        if (beginningOfPeriod < date && date < endOfPeriod)
-            transactions->representIncome(localListOfIncomes[i]);
+        if (beginningOfPeriod <= date && date <= endOfPeriod){
+            localListOfIncomes[i].representIncome();
+            incomeFromPeriod += localListOfIncomes[i].getAmount();
+            }
     }
-    for (int i = 0; localListOfExpends.size(); i++){
+    cout << "Wydatki:" << endl;
+    for (int i = 0; i < localListOfExpends.size(); i++){
         long int date = localListOfExpends[i].getDate();
-        if (beginningOfPeriod < date && date < endOfPeriod)
-            transactions->representExpend(localListOfExpends[i]);
+        if (beginningOfPeriod <= date && date <= endOfPeriod){
+            localListOfExpends[i].representExpend();
+            expendFromPeriod += localListOfExpends[i].getAmount();
+            }
     }
+    cout << endl<< "W wybranym okresie wydano: " << expendFromPeriod << " Przychod wyniosl: " << incomeFromPeriod << endl << endl;
+    cout << "Bilans w wybranym okresie: " << incomeFromPeriod - expendFromPeriod << endl;
 }
 
 void UsersBudgetManager::generateReportFromCustomDate(){
