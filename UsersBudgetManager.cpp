@@ -32,6 +32,8 @@ void UsersBudgetManager::generateReportFromPreviousMonth(){
 void UsersBudgetManager::generateReportFromDateToDate(long int beginningOfPeriod, long int endOfPeriod){
     vector <Income> localListOfIncomes = transactions -> incomes;
     vector <Expend> localListOfExpends = transactions -> expends;
+    sort(localListOfIncomes.begin(), localListOfIncomes.end());
+    sort(localListOfExpends.begin(), localListOfExpends.end());
     double expendFromPeriod = 0;
     double incomeFromPeriod = 0;
     cout << "Przychody:" << endl;

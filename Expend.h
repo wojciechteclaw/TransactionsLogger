@@ -25,6 +25,10 @@ public:
     void setId(int);
     void setUserId(int);
     void representExpend();
+
+    bool operator<(Expend expend){
+        return (getDate() < expend.getDate());
+    }
 };
 
 #endif

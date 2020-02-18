@@ -27,5 +27,9 @@ public:
     void setUserId(int);
     void setId(int);
     void representIncome();
+
+    bool operator<(Income income){
+        return (getDate() < income.getDate());
+}
 };
 #endif
